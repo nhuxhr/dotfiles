@@ -19,13 +19,35 @@ function setup_user_group(){
     x sudo usermod -aG video,i2c,input "$(whoami)"
   fi
 }
+
+function setup_clamav(){
+  x sudo systemctl enable --now clamav-freshclam clamav-daemon
+}
+
+function install_crates(){
+  x cargo install --locked tree-sitter-cli bacon llmfit elio
+}
 #####################################################################################
 # These python packages are installed using uv into the venv (virtual environment). Once the folder of the venv gets deleted, they are all gone cleanly. So it's considered as setups, not dependencies.
 showfun install-python-packages
 v install-python-packages
 
+if ! command -v rustc &> /dev/null; then
+  showfun install-rust
+  v install-rust
+  sleep 1
+  showfun install_crates
+  v install_crates
+else
+  showfun install_crates
+  v install_crates
+fi
+
 showfun setup_user_group
 v setup_user_group
+
+showfun setup_clamav
+v setup_clamav
 
 if [[ ! -z $(systemctl --version) ]]; then
   # For Fedora, uinput is required for the virtual keyboard to function, and udev rules enable input group users to utilize it.

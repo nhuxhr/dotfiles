@@ -30,4 +30,19 @@ if status is-interactive
     if test "$TERM" = "xterm-kitty"
         alias ssh 'kitten ssh'
     end
+
+    alias v vim
+    alias vi vim
+    alias nv nvim
 end
+
+set -gx SHELL (which fish)
+
+# bun
+set BUN_INSTALL $HOME/.bun
+set PATH $PATH $BUN_INSTALL/bin
+
+# set PATH $PATH $HOME/.local/share/nvim/mason/bin
+
+set EDITOR vim
+set SYSTEM_LESS FRSXM # make journalctl less work as normal

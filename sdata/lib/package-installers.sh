@@ -80,3 +80,7 @@ install-python-packages(){
   fi
   x deactivate
 }
+
+install-rust(){
+  x sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)
+}
