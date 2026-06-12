@@ -1,0 +1,37 @@
+groups=(illogical-impulse)
+pkgname=illogical-impulse-1337
+pkgver=1.0
+pkgrel=1
+pkgdesc='Illogical Impulse 1337 Dependencies'
+arch=(any)
+license=(None)
+depends=(
+  linux-headers
+  clamav
+  bun
+  vim
+  neovim
+  btop
+  fastfetch
+  zellij
+  lazygit
+  lazydocker
+  zip
+  unzip
+  seahorse
+  docker
+  docker-compose
+  postgresql-libs
+  tor
+  termdown
+  cloudflared
+  wireshark-cli
+  wireshark-qt
+  termshark
+  httpie
+  opencode
+  ark
+  gnome-disk-utility
+  qbittorrent
+  spotify
+)

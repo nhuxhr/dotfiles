@@ -1,0 +1,13 @@
+groups=(illogical-impulse)
+pkgname=illogical-impulse-1337-nvidia
+pkgver=1.0
+pkgrel=1
+pkgdesc='Illogical Impulse 1337 Nvidia Dependencies'
+arch=(any)
+license=(None)
+depends=(
+  vulkan-tools
+  nvidia-open
+  nvidia-utils
+  nvidia-settings
+)

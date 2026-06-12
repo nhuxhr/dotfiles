@@ -12,6 +12,8 @@ Options for install:
   -c, --clean               Clean the build cache first
       --skip-allgreeting    Skip the whole process greeting
       --skip-alldeps        Skip the whole process installing dependency
+      --skip-1337deps       Skip the whole process installing 1337 dependency
+      --skip-1337etcsdeps   Skip the whole process installing 1337 extras dependency
       --skip-allsetups      Skip the whole process setting up permissions/services etc
       --skip-allfiles       Skip the whole process copying configuration files
       --ignore-outdate      Ignore outdate checking for community supported \"dist-*\".
@@ -75,6 +77,8 @@ while true ; do
     -F|--firstrun) INSTALL_FIRSTRUN=true;shift;;
     --skip-allgreeting) SKIP_ALLGREETING=true;shift;;
     --skip-alldeps) SKIP_ALLDEPS=true;shift;;
+    --skip-1337deps) SKIP_1337DEPS=true;shift;;
+    --skip-1337etcsdeps) SKIP_1337ETCSDEPS=true;shift;;
     --skip-allsetups) SKIP_ALLSETUPS=true;shift;;
     --skip-allfiles) SKIP_ALLFILES=true;shift;;
     -s|--skip-sysupdate) SKIP_SYSUPDATE=true;shift;;

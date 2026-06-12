@@ -1,0 +1,21 @@
+groups=(illogical-impulse)
+pkgname=illogical-impulse-1337-extras
+pkgver=1.0
+pkgrel=1
+pkgdesc='Illogical Impulse 1337 Extras Dependencies'
+arch=(any)
+license=(None)
+depends=(
+  zed
+  1password
+  gnome-disk-utility
+  kdenlive
+  yaak-bin
+  telegram-desktop
+  mullvad-vpn
+  mullvad-browser-bin
+  torbrowser-launcher
+  beekeeper-studio-bin
+  vmware-workstation
+  zen-browser-bin
+)

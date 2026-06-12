@@ -1,0 +1,11 @@
+groups=(illogical-impulse)
+pkgname=illogical-impulse-1337-ollama
+pkgver=1.0
+pkgrel=1
+pkgdesc='Illogical Impulse 1337 Ollama Dependencies'
+arch=(any)
+license=(None)
+depends=(
+  ollama
+  ollama-cuda
+)

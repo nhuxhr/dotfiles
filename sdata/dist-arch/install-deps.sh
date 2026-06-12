@@ -95,6 +95,17 @@ metapkgs+=(./sdata/dist-arch/illogical-impulse-hyprland)
 metapkgs+=(./sdata/dist-arch/illogical-impulse-microtex-git)
 metapkgs+=(./sdata/dist-arch/illogical-impulse-quickshell-git)
 metapkgs+=(./sdata/dist-arch/illogical-impulse-bibata-modern-classic-bin)
+# 1337 packages
+if [[ "${SKIP_1337DEPS}" != true ]]; then
+  metapkgs+=(./sdata/dist-arch/illogical-impulse-1337)
+  if lspci | grep -q -i nvidia; then
+    metapkgs+=(./sdata/dist-arch/illogical-impulse-1337-nvidia)
+    metapkgs+=(./sdata/dist-arch/illogical-impulse-1337-ollama)
+  fi
+  if [[ "${SKIP_1337ETCSDEPS}" != true ]]; then
+    metapkgs+=(./sdata/dist-arch/illogical-impulse-1337-extras)
+  fi
+fi
 
 for i in "${metapkgs[@]}"; do
   metainstallflags="--needed"
