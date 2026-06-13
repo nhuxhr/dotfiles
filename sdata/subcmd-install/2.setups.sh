@@ -44,6 +44,24 @@ function install_crates(){
 
   x cargo install --locked tree-sitter-cli bacon llmfit elio
 }
+
+function setup_bash(){
+  BASHRCPATH="$HOME/.bashrc"
+  STARSHIP_LINE='eval "$(starship init bash)"'
+
+  # Check and add Starship
+  grep -qF "$STARSHIP_LINE" "$BASHRCPATH" || echo "$STARSHIP_LINE" >> "$BASHRCPATH"
+
+  # Check if EDITOR is set
+  if [ -z "$EDITOR" ]; then
+    echo 'export EDITOR=vim' >> "$HOME/.bashrc"
+  fi
+
+  # Check if SYSTEM_LESS is set
+  if [ -z "$SYSTEM_LESS" ]; then
+    echo 'export SYSTEM_LESS=FRSXM' >> "$HOME/.bashrc"
+  fi
+}
 #####################################################################################
 # These python packages are installed using uv into the venv (virtual environment). Once the folder of the venv gets deleted, they are all gone cleanly. So it's considered as setups, not dependencies.
 showfun install-python-packages
@@ -105,6 +123,9 @@ fi
 if [[ "$OS_GROUP_ID" == "gentoo" ]]; then
   v sudo chown -R $(whoami):$(whoami) ~/.local/
 fi
+
+showfun setup_bash
+v setup_bash
 
 v gsettings set org.gnome.desktop.interface font-name 'Google Sans Flex Medium 11 @opsz=11,wght=500'
 v gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
