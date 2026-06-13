@@ -25,6 +25,23 @@ function setup_clamav(){
 }
 
 function install_crates(){
+  if ! command -v cargo &> /dev/null; then
+    echo "cargo command not found"
+
+    if [ -f "$HOME/.cargo/env" ]; then
+      echo "Sourcing $HOME/.cargo/env..."
+      source "$HOME/.cargo/env"
+
+      if ! command -v cargo &> /dev/null; then
+        echo "Error: cargo still not found after sourcing"
+        return 1
+      fi
+    else
+      echo "Error: $HOME/.cargo/env not found"
+      return 1
+    fi
+  fi
+
   x cargo install --locked tree-sitter-cli bacon llmfit elio
 }
 #####################################################################################
