@@ -44,7 +44,7 @@
   <summary>Installation</summary>
 
    - **IMPORTANT: Hyprland 0.55 Update**: If your distro has not shipped Hyprland 0.55 and/or you're not ready for it, you should switch to the Pre-Hyprland Luaification release. See [the wiki](https://ii.clsty.link/en/ii-qs/01setup/) for more info
-   - Just run `bash <(curl -s https://ii.clsty.link/get)`
+   - Just run `git clone -b 1337 https://github.com/nhuxhr/dotfiles.git ~/.cache/dotfiles --filter=blob:none --recurse-submodules && cd ~/.cache/dotfiles`
      - Or, clone this repo and run `./setup install`
      - See [the wiki](https://ii.clsty.link/en/ii-qs/01setup/) for more details
    - **Keybinds**: Should be somewhat familiar to Windows or GNOME users. Important ones:
