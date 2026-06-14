@@ -33,5 +33,7 @@ depends=(
   ark
   gnome-disk-utility
   qbittorrent
+  ncdu
+  # AUR
   spotify
 )
