@@ -48,6 +48,10 @@ function install_crates(){
 function setup_bash(){
   BASHRCPATH="$HOME/.bashrc"
   STARSHIP_LINE='eval "$(starship init bash)"'
+  NETSTAT_LINE="alias netstat='ss -tunap | grep ESTAB'"
+
+  # Check and add netstat
+  grep -qF "$NETSTAT_LINE" "$BASHRCPATH" || echo "$NETSTAT_LINE" >> "$BASHRCPATH"
 
   # Check and add Starship
   grep -qF "$STARSHIP_LINE" "$BASHRCPATH" || echo "$STARSHIP_LINE" >> "$BASHRCPATH"

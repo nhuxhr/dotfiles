@@ -34,6 +34,7 @@ if status is-interactive
     alias v vim
     alias vi vim
     alias nv nvim
+    alias netstat 'ss -tunap | grep ESTAB'
 end
 
 set -gx SHELL (which fish)
