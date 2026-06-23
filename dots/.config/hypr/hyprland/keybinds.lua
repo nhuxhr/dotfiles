@@ -267,16 +267,16 @@ end
 
 --#/# bind = CTRL+SUPER, ←/→,, -- Focus left/right
 --#/# bind = CTRL+SUPER+ALT, ←/→,, -- # [hidden] Focus busy left/right
-for i = 1, 2 do
-    local keys = { "Left", "Right" }
+for i = 0, 5 do
+    local keys = { "Left", "Right", "K", "J", "H", "L" }
     local prefix = { "r-", "r+" }
     local descdir = { "left", "right" }
-    hl.bind("CTRL + SUPER + " .. keys[i], hl.dsp.focus({ workspace = prefix[i] .. "1" }), {description = "Workspace: Focus " .. descdir[i]})
+    hl.bind("CTRL + SUPER + " .. keys[i + 1], hl.dsp.focus({ workspace = prefix[i % 2 + 1] .. "1" }), {description = "Workspace: Focus " .. descdir[i % 2 + 1]})
 end
-for i = 1, 2 do
-    local keys = { "Left", "Right" }
+for i = 0, 5 do
+    local keys = { "Left", "Right", "K", "J", "H", "L" }
     local prefix = { "m-", "m+" }
-    hl.bind("CTRL + SUPER + ALT + " .. keys[i], hl.dsp.focus({ workspace = prefix[i] .. "1" }))
+    hl.bind("CTRL + SUPER + ALT + " .. keys[i + 1], hl.dsp.focus({ workspace = prefix[i % 2 + 1] .. "1" }))
 end
 --#/# bind = SUPER, Page_↑/↓,, -- Focus left/right
 for i = 1, 4 do
@@ -357,3 +357,5 @@ hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd(taskManager), { description = "
 --# Cursed stuff
 --## Make window not amogus large
 hl.bind("CTRL + SUPER + Backslash", hl.dsp.window.resize({ x = 640, y = 480, "exact" }))
+
+hl.bind("CTRL+SUPER+ALT+Slash", hl.dsp.exec_cmd("xdg-open ~/.config/hypr/custom/keybinds.lua"), { description = "Edit user keybinds" })
