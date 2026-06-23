@@ -9,6 +9,7 @@ depends=(
   linux-headers
   clamav
   bun
+  lua
   vim
   neovim
   btop
