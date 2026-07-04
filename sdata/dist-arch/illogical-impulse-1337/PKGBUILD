@@ -8,6 +8,7 @@ license=(None)
 depends=(
   linux-headers
   clamav
+  tmux
   bun
   lua
   vim
