@@ -36,6 +36,7 @@ depends=(
   gnome-disk-utility
   qbittorrent
   ncdu
+  xclip
   # AUR
   spotify
 )
