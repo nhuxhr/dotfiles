@@ -112,7 +112,7 @@ format = " [  $branch](fg:#9198a1)"
 
 [git_status]
 conflicted = " 🏳"
-ahead = " 🏎💨"
+ahead = " 🚀"
 behind = " 😰"
 diverged = " 😵"
 untracked = " 🤷"
