@@ -267,16 +267,16 @@ end
 
 --#/# bind = CTRL+SUPER, ←/→,, -- Focus left/right
 --#/# bind = CTRL+SUPER+ALT, ←/→,, -- # [hidden] Focus busy left/right
-for i = 0, 5 do
-    local keys = { "Left", "Right", "K", "J", "H", "L" }
+for i = 1, 2 do
+    local keys = { "Left", "Right" }
     local prefix = { "r-", "r+" }
     local descdir = { "left", "right" }
-    hl.bind("CTRL + SUPER + " .. keys[i + 1], hl.dsp.focus({ workspace = prefix[i % 2 + 1] .. "1" }), {description = "Workspace: Focus " .. descdir[i % 2 + 1]})
+    hl.bind("CTRL + SUPER + " .. keys[i], hl.dsp.focus({ workspace = prefix[i] .. "1" }), {description = "Workspace: Focus " .. descdir[i]})
 end
-for i = 0, 5 do
-    local keys = { "Left", "Right", "K", "J", "H", "L" }
+for i = 1, 2 do
+    local keys = { "Left", "Right" }
     local prefix = { "m-", "m+" }
-    hl.bind("CTRL + SUPER + ALT + " .. keys[i + 1], hl.dsp.focus({ workspace = prefix[i % 2 + 1] .. "1" }))
+    hl.bind("CTRL + SUPER + ALT + " .. keys[i], hl.dsp.focus({ workspace = prefix[i] .. "1" }))
 end
 --#/# bind = SUPER, Page_↑/↓,, -- Focus left/right
 for i = 1, 4 do
@@ -302,23 +302,20 @@ for i = 1, 4 do
 end
 
 --##! Virtual machines
-for i = 1, 2 do
-    local keys = { "F1", "V" }
-    hl.define_submap("virtual-machine", function()
-        hl.bind("SUPER + ALT + " .. keys[i], function()
-            local currentsubmap = hl.get_current_submap()
-            if currentsubmap == "virtual-machine" then
-                hl.dispatch(hl.dsp.exec_cmd(
-                    "notify-send 'Exited Virtual Machine submap' 'Keybinds re-enabled' -a 'Hyprland'"))
-                hl.dispatch(hl.dsp.submap("reset"))
-            elseif currentsubmap == "" then
-                hl.dispatch(hl.dsp.exec_cmd(
-                    "notify-send 'Entered Virtual Machine submap' 'Keybinds disabled. hit SUPER+ALT+F1 to escape' -a 'Hyprland'"))
-                hl.dispatch(hl.dsp.submap("virtual-machine"))
-            end
-        end, { submap_universal = true })
-    end)
-end
+hl.define_submap("virtual-machine", function()
+    hl.bind("SUPER + ALT + F1", function()
+        local currentsubmap = hl.get_current_submap()
+        if currentsubmap == "virtual-machine" then
+            hl.dispatch(hl.dsp.exec_cmd(
+                "notify-send 'Exited Virtual Machine submap' 'Keybinds re-enabled' -a 'Hyprland'"))
+            hl.dispatch(hl.dsp.submap("reset"))
+        elseif currentsubmap == "" then
+            hl.dispatch(hl.dsp.exec_cmd(
+                "notify-send 'Entered Virtual Machine submap' 'Keybinds disabled. hit SUPER+ALT+F1 to escape' -a 'Hyprland'"))
+            hl.dispatch(hl.dsp.submap("virtual-machine"))
+        end
+    end, { submap_universal = true })
+end)
 
 
 --#!
@@ -360,5 +357,3 @@ hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd(taskManager), { description = "
 --# Cursed stuff
 --## Make window not amogus large
 hl.bind("CTRL + SUPER + Backslash", hl.dsp.window.resize({ x = 640, y = 480, "exact" }))
-
-hl.bind("CTRL+SUPER+ALT+Slash", hl.dsp.exec_cmd("xdg-open ~/.config/hypr/custom/keybinds.lua"), { description = "Edit user keybinds" })

@@ -44,6 +44,30 @@ set BUN_INSTALL $HOME/.bun
 set PATH $PATH $BUN_INSTALL/bin
 
 # set PATH $PATH $HOME/.local/share/nvim/mason/bin
+set PATH $PATH $HOME/develop/flutter/bin
 
 set EDITOR vim
 set SYSTEM_LESS FRSXM # make journalctl less work as normal
+
+# Added by Antigravity CLI installer
+set -gx PATH "$HOME/.local/bin" $PATH
+
+# Android SDK Paths
+set ANDROID_HOME $HOME/Android/Sdk
+set PATH $PATH:$ANDROID_HOME/emulator
+set PATH $PATH:$ANDROID_HOME/platform-tools
+# set PATH $PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+# set PATH $PATH:$ANDROID_HOME/tools/bin
+
+# set http_proxy "http://172.16.48.85:8080"
+# set https_proxy "http://172.16.48.85:8080"
+#
+# set HTTP_PROXY "http://172.16.48.85:8080"
+# set HTTPS_PROXY "http://172.16.48.85:8080"
+
+# pnpm
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
